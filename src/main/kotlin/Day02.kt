@@ -27,9 +27,9 @@ class Day02(input: String) {
             fun List<Int>.isAlmostSafe(): Boolean {
                 if (isSafe()) return true
 
-                forEach { value ->
+                forEachIndexed { index, value ->
                     val copy = this.toMutableList()
-                    copy.remove(value)
+                    copy.removeAt(index)
                     if (copy.isSafe()) {
                         println("$this is not safe")
                         println("$copy is safe when removing $value")
