@@ -19,14 +19,10 @@ class Day02(input: String) {
     class Report(private val values: List<Int>) {
         fun isSafe(): Boolean = values.isSafe()
 
-        fun isAlmostSafe(): Boolean {
-            return values.isAlmostSafe()
-        }
+        fun isAlmostSafe(): Boolean = values.isAlmostSafe()
 
         companion object {
-            fun List<Int>.isSafe(): Boolean {
-                return (isIncreasing() || isDecreasing()) && isNear()
-            }
+            fun List<Int>.isSafe(): Boolean = (isIncreasing() || isDecreasing()) && isNear()
 
             fun List<Int>.isAlmostSafe(): Boolean {
                 if (isSafe()) return true
@@ -73,7 +69,7 @@ class Day02(input: String) {
                 forEachIndexed { index, value ->
                     if (index == this.lastIndex) return true
 
-                    if (!isNear(value, this[index + 1])) {
+                    if (!areNear(value, this[index + 1])) {
                         return false
                     }
                 }
@@ -81,9 +77,7 @@ class Day02(input: String) {
                 return true
             }
 
-            fun isNear(value1: Int, value2: Int): Boolean {
-                return abs(value1 - value2) <= 3
-            }
+            fun areNear(value1: Int, value2: Int): Boolean = abs(value1 - value2) <= 3
         }
     }
 
